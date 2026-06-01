@@ -7,488 +7,177 @@
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0f1117;
-    --bg-card: #1a1d27;
-    --bg-card-hover: #21253a;
-    --border: #2a2f45;
-    --border-hover: #4a5280;
-    --accent: #6c63ff;
-    --accent-2: #ff6584;
-    --accent-3: #43e97b;
-    --text: #e8eaf6;
-    --text-soft: #9ca3c8;
-    --text-muted: #5a6080;
-    --shadow: 0 4px 24px rgba(0,0,0,0.4);
-    --radius: 16px;
+    --bg: #0f1117; --bg-card: #1a1d27; --bg-card-hover: #21253a;
+    --border: #2a2f45; --border-hover: #4a5280; --accent: #6c63ff;
+    --text: #e8eaf6; --text-soft: #9ca3c8; --text-muted: #5a6080;
+    --shadow: 0 4px 24px rgba(0,0,0,0.4); --radius: 16px;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Heebo', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
 
-  body {
-    font-family: 'Heebo', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
-
-  /* ---- Header ---- */
   header {
-    padding: 40px 32px 0;
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
+    padding: 40px 32px 0; max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
   }
-
   .header-title {
-    font-size: 28px;
-    font-weight: 900;
+    font-size: 28px; font-weight: 900;
     background: linear-gradient(135deg, #6c63ff, #ff6584);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
-
-  .header-sub {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 4px;
-  }
+  .header-sub { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+  .header-actions { display: flex; gap: 10px; flex-wrap: wrap; }
 
   .add-btn {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 22px;
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-family: 'Heebo', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 4px 16px rgba(108,99,255,0.4);
+    display: flex; align-items: center; gap: 8px; padding: 12px 22px;
+    background: var(--accent); color: white; border: none; border-radius: 12px;
+    font-family: 'Heebo', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer;
+    transition: all 0.2s; box-shadow: 0 4px 16px rgba(108,99,255,0.4);
   }
+  .add-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(108,99,255,0.5); background: #7b73ff; }
 
-  .add-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(108,99,255,0.5);
-    background: #7b73ff;
+  .save-btn {
+    display: flex; align-items: center; gap: 8px; padding: 12px 18px;
+    background: #1a2a1a; color: #43e97b; border: 1.5px solid #43e97b44;
+    border-radius: 12px; font-family: 'Heebo', sans-serif; font-size: 14px;
+    font-weight: 600; cursor: pointer; transition: all 0.2s;
   }
+  .save-btn:hover { background: #1f351f; box-shadow: 0 4px 16px rgba(67,233,123,0.25); }
+  .save-btn.saved { color: #fff; background: #2d6a4f; border-color: #43e97b; }
 
-  /* ---- Search ---- */
-  .search-wrap {
-    max-width: 1100px;
-    margin: 28px auto 0;
-    padding: 0 32px;
+  .save-notice {
+    max-width: 1100px; margin: 16px auto 0; padding: 0 32px;
   }
+  .notice-bar {
+    background: #1a1f35; border: 1.5px solid #6c63ff44; border-radius: 10px;
+    padding: 10px 16px; font-size: 13px; color: var(--text-soft);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .notice-bar .dot { width: 8px; height: 8px; border-radius: 50%; background: #43e97b; flex-shrink: 0; }
+  .notice-bar .dot.dirty { background: #f7971e; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
+  .search-wrap { max-width: 1100px; margin: 20px auto 0; padding: 0 32px; }
   .search-input {
-    width: 100%;
-    padding: 12px 18px;
-    background: var(--bg-card);
-    border: 1.5px solid var(--border);
-    border-radius: 12px;
-    color: var(--text);
-    font-family: 'Heebo', sans-serif;
-    font-size: 14px;
-    transition: border-color 0.2s;
-    outline: none;
+    width: 100%; padding: 12px 18px; background: var(--bg-card);
+    border: 1.5px solid var(--border); border-radius: 12px; color: var(--text);
+    font-family: 'Heebo', sans-serif; font-size: 14px; transition: border-color 0.2s; outline: none;
   }
-
   .search-input:focus { border-color: var(--accent); }
   .search-input::placeholder { color: var(--text-muted); }
 
-  /* ---- Category Filter ---- */
-  .filter-wrap {
-    max-width: 1100px;
-    margin: 16px auto 0;
-    padding: 0 32px;
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
+  .filter-wrap { max-width: 1100px; margin: 14px auto 0; padding: 0 32px; display: flex; gap: 8px; flex-wrap: wrap; }
   .filter-chip {
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1.5px solid var(--border);
-    background: transparent;
-    color: var(--text-soft);
-    font-family: 'Heebo', sans-serif;
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.18s;
+    padding: 6px 14px; border-radius: 20px; border: 1.5px solid var(--border);
+    background: transparent; color: var(--text-soft); font-family: 'Heebo', sans-serif;
+    font-size: 13px; cursor: pointer; transition: all 0.18s;
   }
+  .filter-chip.active, .filter-chip:hover { border-color: var(--accent); color: white; background: var(--accent); }
 
-  .filter-chip.active, .filter-chip:hover {
-    border-color: var(--accent);
-    color: white;
-    background: var(--accent);
-  }
-
-  /* ---- Grid ---- */
   .grid {
-    max-width: 1100px;
-    margin: 28px auto 60px;
-    padding: 0 32px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 18px;
+    max-width: 1100px; margin: 24px auto 60px; padding: 0 32px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px;
   }
 
-  /* ---- Link Card ---- */
   .link-card {
-    background: var(--bg-card);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 22px;
-    text-decoration: none;
-    color: var(--text);
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    transition: all 0.22s;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
+    background: var(--bg-card); border: 1.5px solid var(--border); border-radius: var(--radius);
+    padding: 22px; color: var(--text); display: flex; flex-direction: column; gap: 14px;
+    transition: all 0.22s; position: relative; overflow: hidden; cursor: pointer;
   }
-
   .link-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: var(--radius);
+    content: ''; position: absolute; inset: 0; border-radius: var(--radius);
     background: linear-gradient(135deg, var(--card-color, #6c63ff) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.22s;
+    opacity: 0; transition: opacity 0.22s;
   }
-
-  .link-card:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow);
-    background: var(--bg-card-hover);
-  }
-
+  .link-card:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: var(--shadow); background: var(--bg-card-hover); }
   .link-card:hover::before { opacity: 0.07; }
 
-  .card-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-  }
-
-  .card-icon {
-    font-size: 34px;
-    line-height: 1;
-    flex-shrink: 0;
-  }
-
-  .card-actions {
-    display: flex;
-    gap: 6px;
-    opacity: 0;
-    transition: opacity 0.18s;
-  }
-
+  .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .card-icon { font-size: 34px; line-height: 1; flex-shrink: 0; }
+  .card-actions { display: flex; gap: 6px; opacity: 0; transition: opacity 0.18s; }
   .link-card:hover .card-actions { opacity: 1; }
-
   .card-action-btn {
-    background: rgba(255,255,255,0.08);
-    border: none;
-    border-radius: 8px;
-    color: var(--text-soft);
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 14px;
-    transition: all 0.15s;
-    text-decoration: none;
+    background: rgba(255,255,255,0.08); border: none; border-radius: 8px;
+    color: var(--text-soft); width: 30px; height: 30px; display: flex;
+    align-items: center; justify-content: center; cursor: pointer; font-size: 14px;
+    transition: all 0.15s; text-decoration: none;
   }
-
   .card-action-btn:hover { background: rgba(255,255,255,0.16); color: white; }
   .card-action-btn.danger:hover { background: rgba(255,101,132,0.25); color: #ff6584; }
+  .card-name { font-size: 17px; font-weight: 700; line-height: 1.3; }
+  .card-desc { font-size: 13px; color: var(--text-soft); line-height: 1.5; }
+  .card-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+  .card-category { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; border: 1px solid; text-transform: uppercase; letter-spacing: 0.5px; }
+  .card-url { font-size: 11px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 140px; }
 
-  .card-name {
-    font-size: 17px;
-    font-weight: 700;
-    line-height: 1.3;
-    color: var(--text);
-  }
-
-  .card-desc {
-    font-size: 13px;
-    color: var(--text-soft);
-    line-height: 1.5;
-  }
-
-  .card-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: auto;
-  }
-
-  .card-category {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 20px;
-    border: 1px solid;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .card-url {
-    font-size: 11px;
-    color: var(--text-muted);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 140px;
-  }
-
-  /* ---- Empty ---- */
-  .empty {
-    grid-column: 1/-1;
-    text-align: center;
-    padding: 80px 20px;
-    color: var(--text-muted);
-  }
-
+  .empty { grid-column: 1/-1; text-align: center; padding: 80px 20px; color: var(--text-muted); }
   .empty-icon { font-size: 56px; margin-bottom: 16px; }
   .empty-title { font-size: 20px; color: var(--text-soft); margin-bottom: 8px; }
 
-  /* ---- Modal ---- */
+  .count-badge { font-size: 13px; color: var(--text-muted); padding: 0 32px; max-width: 1100px; margin: 16px auto 0; }
+
+  /* Modal */
   .overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(6px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-    padding: 20px;
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+    display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px;
   }
-
   .overlay.open { display: flex; }
-
   .modal {
-    background: var(--bg-card);
-    border: 1.5px solid var(--border);
-    border-radius: 20px;
-    padding: 32px;
-    width: 100%;
-    max-width: 520px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-    animation: popIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
+    background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 20px;
+    padding: 32px; width: 100%; max-width: 520px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    animation: popIn 0.25s cubic-bezier(0.34,1.56,0.64,1); max-height: 90vh; overflow-y: auto;
   }
-
-  @keyframes popIn {
-    from { opacity: 0; transform: scale(0.9) translateY(20px); }
-    to   { opacity: 1; transform: scale(1) translateY(0); }
-  }
-
+  @keyframes popIn { from{opacity:0;transform:scale(0.9) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
   .modal-title {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 24px;
+    font-size: 20px; font-weight: 700; margin-bottom: 24px;
     background: linear-gradient(135deg, #6c63ff, #ff6584);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    margin-bottom: 18px;
+  .form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+  .form-label { font-size: 12px; font-weight: 600; color: var(--text-soft); text-transform: uppercase; letter-spacing: 0.5px; }
+  .form-input, .form-textarea {
+    background: var(--bg); border: 1.5px solid var(--border); border-radius: 10px;
+    color: var(--text); font-family: 'Heebo', sans-serif; font-size: 14px;
+    padding: 11px 14px; transition: border-color 0.18s; outline: none;
   }
-
-  .form-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-soft);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  .form-input, .form-select, .form-textarea {
-    background: var(--bg);
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    color: var(--text);
-    font-family: 'Heebo', sans-serif;
-    font-size: 14px;
-    padding: 11px 14px;
-    transition: border-color 0.18s;
-    outline: none;
-  }
-
-  .form-input:focus, .form-select:focus, .form-textarea:focus {
-    border-color: var(--accent);
-  }
-
-  .form-select option { background: #1a1d27; }
-
+  .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
   .form-textarea { resize: vertical; min-height: 70px; }
 
-  /* Icon picker */
-  .icon-picker-label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--text-soft);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
-    display: block;
-  }
-
   .icon-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(46px, 1fr));
-    gap: 6px;
-    max-height: 180px;
-    overflow-y: auto;
-    padding: 4px;
-    background: var(--bg);
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--border) transparent;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(46px, 1fr)); gap: 6px;
+    max-height: 180px; overflow-y: auto; padding: 4px; background: var(--bg);
+    border: 1.5px solid var(--border); border-radius: 10px;
+    scrollbar-width: thin; scrollbar-color: var(--border) transparent;
   }
-
-  .icon-option {
-    font-size: 24px;
-    padding: 8px;
-    border-radius: 8px;
-    border: 2px solid transparent;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.15s;
-    user-select: none;
-  }
-
+  .icon-option { font-size: 24px; padding: 8px; border-radius: 8px; border: 2px solid transparent; cursor: pointer; text-align: center; transition: all 0.15s; user-select: none; }
   .icon-option:hover { background: rgba(108,99,255,0.15); border-color: var(--accent); }
   .icon-option.selected { background: rgba(108,99,255,0.25); border-color: var(--accent); box-shadow: 0 0 0 3px rgba(108,99,255,0.2); }
 
-  .custom-icon-row {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-    align-items: center;
-  }
-
+  .custom-icon-row { display: flex; gap: 10px; margin-top: 10px; align-items: center; }
   .custom-icon-input {
-    flex: 1;
-    background: var(--bg);
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    color: var(--text);
-    font-size: 20px;
-    text-align: center;
-    padding: 8px;
-    outline: none;
-    width: 60px;
-    transition: border-color 0.18s;
+    background: var(--bg); border: 1.5px solid var(--border); border-radius: 10px;
+    color: var(--text); font-size: 20px; text-align: center; padding: 8px; outline: none;
+    width: 60px; transition: border-color 0.18s;
   }
-
   .custom-icon-input:focus { border-color: var(--accent); }
+  .custom-icon-preview { font-size: 30px; width: 46px; text-align: center; }
 
-  .custom-icon-preview {
-    font-size: 30px;
-    width: 46px;
-    text-align: center;
-  }
+  .color-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+  .color-swatch { width: 32px; height: 32px; border-radius: 50%; border: 2.5px solid transparent; cursor: pointer; transition: all 0.15s; }
+  .color-swatch:hover, .color-swatch.selected { transform: scale(1.2); border-color: white; }
 
-  /* Color accent picker */
-  .color-row {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 4px;
-  }
-
-  .color-swatch {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    border: 2.5px solid transparent;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-
-  .color-swatch:hover, .color-swatch.selected {
-    transform: scale(1.2);
-    border-color: white;
-  }
-
-  /* Modal buttons */
-  .modal-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 24px;
-  }
-
-  .btn {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 10px;
-    font-family: 'Heebo', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.18s;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: white;
-    box-shadow: 0 4px 14px rgba(108,99,255,0.4);
-  }
-
+  .modal-actions { display: flex; gap: 10px; margin-top: 24px; }
+  .btn { flex: 1; padding: 12px; border: none; border-radius: 10px; font-family: 'Heebo', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.18s; }
+  .btn-primary { background: var(--accent); color: white; box-shadow: 0 4px 14px rgba(108,99,255,0.4); }
   .btn-primary:hover { background: #7b73ff; transform: translateY(-1px); }
-
-  .btn-secondary {
-    background: rgba(255,255,255,0.06);
-    color: var(--text-soft);
-    border: 1.5px solid var(--border);
-  }
-
+  .btn-secondary { background: rgba(255,255,255,0.06); color: var(--text-soft); border: 1.5px solid var(--border); }
   .btn-secondary:hover { background: rgba(255,255,255,0.1); color: var(--text); }
-
-  .btn-danger {
-    background: rgba(255,101,132,0.15);
-    color: #ff6584;
-    border: 1.5px solid rgba(255,101,132,0.3);
-  }
-
+  .btn-danger { background: rgba(255,101,132,0.15); color: #ff6584; border: 1.5px solid rgba(255,101,132,0.3); }
   .btn-danger:hover { background: rgba(255,101,132,0.25); }
 
-  /* Count display */
-  .count-badge {
-    font-size: 13px;
-    color: var(--text-muted);
-    padding: 0 32px;
-    max-width: 1100px;
-    margin: 20px auto 0;
-  }
+  .hidden { display: none !important; }
 
   @media (max-width: 600px) {
-    header, .search-wrap, .filter-wrap, .grid, .count-badge { padding-left: 16px; padding-right: 16px; }
+    header, .search-wrap, .filter-wrap, .grid, .count-badge, .save-notice { padding-left: 16px; padding-right: 16px; }
     .grid { grid-template-columns: 1fr; }
     .modal { padding: 24px 18px; }
   }
@@ -501,53 +190,53 @@
     <div class="header-title">🔗 הלינקים שלי</div>
     <div class="header-sub">כל הדברים שיצרת, במקום אחד</div>
   </div>
-  <button class="add-btn" onclick="openModal()">
-    <span style="font-size:20px">＋</span> הוסף לינק
-  </button>
+  <div class="header-actions">
+    <button class="save-btn" id="saveFileBtn" onclick="saveFile()">
+      💾 שמור קובץ
+    </button>
+    <button class="add-btn" onclick="openModal()">
+      <span style="font-size:20px">＋</span> הוסף לינק
+    </button>
+  </div>
 </header>
+
+<div class="save-notice">
+  <div class="notice-bar" id="noticeBar">
+    <div class="dot" id="statusDot"></div>
+    <span id="statusText">הלינקים שמורים בקובץ — לחץ "שמור קובץ" אחרי כל שינוי והעלה לגיטהאב</span>
+  </div>
+</div>
 
 <div class="search-wrap">
   <input class="search-input" id="searchInput" type="text" placeholder="🔍  חפש לפי שם, תיאור או כתובת..." oninput="render()">
 </div>
-
-<div class="filter-wrap" id="filterWrap">
-  <button class="filter-chip active" data-cat="הכול" onclick="setFilter('הכול')">הכול</button>
-</div>
-
+<div class="filter-wrap" id="filterWrap"></div>
 <div class="count-badge" id="countBadge"></div>
-
 <div class="grid" id="grid"></div>
 
-<!-- Add / Edit Modal -->
+<!-- Modal -->
 <div class="overlay" id="overlay" onclick="closeModalIfOutside(event)">
-  <div class="modal" id="modal">
+  <div class="modal">
     <div class="modal-title" id="modalTitle">הוסף לינק חדש</div>
-
     <div class="form-group">
       <label class="form-label">שם</label>
       <input class="form-input" id="fName" type="text" placeholder="שם הפרויקט או הכלי">
     </div>
-
     <div class="form-group">
       <label class="form-label">כתובת URL</label>
       <input class="form-input" id="fUrl" type="url" placeholder="https://...">
     </div>
-
     <div class="form-group">
       <label class="form-label">תיאור קצר (אופציונלי)</label>
       <textarea class="form-textarea" id="fDesc" placeholder="במה זה שימושי..."></textarea>
     </div>
-
     <div class="form-group">
       <label class="form-label">קטגוריה</label>
-      <div style="display:flex;gap:8px;">
-        <input class="form-input" id="fCat" type="text" list="catList" placeholder="לדוגמה: כלים, פרויקטים, מסמכים">
-        <datalist id="catList"></datalist>
-      </div>
+      <input class="form-input" id="fCat" type="text" list="catList" placeholder="לדוגמה: כלים, פרויקטים, מסמכים">
+      <datalist id="catList"></datalist>
     </div>
-
     <div class="form-group">
-      <label class="icon-picker-label">אייקון</label>
+      <label class="form-label" style="display:block;margin-bottom:8px">אייקון</label>
       <div class="icon-grid" id="iconGrid"></div>
       <div class="custom-icon-row">
         <span style="font-size:13px;color:var(--text-soft);">אייקון מותאם:</span>
@@ -555,172 +244,178 @@
         <div class="custom-icon-preview" id="iconPreview">🔗</div>
       </div>
     </div>
-
     <div class="form-group">
       <label class="form-label">צבע כרטיסייה</label>
       <div class="color-row" id="colorRow"></div>
     </div>
-
     <div class="modal-actions">
       <button class="btn btn-secondary" onclick="closeModal()">ביטול</button>
       <button class="btn btn-danger hidden" id="deleteBtn" onclick="deleteLink()">מחק</button>
-      <button class="btn btn-primary" id="saveBtn" onclick="saveLink()">שמור</button>
+      <button class="btn btn-primary" onclick="saveLink()">שמור</button>
     </div>
   </div>
 </div>
 
+<!-- ═══════════════════════════════════════════════
+     הלינקים מוטמעים כאן — נוצר אוטומטית בלחיצה על "שמור קובץ"
+     ═══════════════════════════════════════════════ -->
+<script id="linksData" type="application/json">
+[]
+</script>
+
 <script>
-// ─── Data ───────────────────────────────────────────────────
-const STORAGE_KEY = 'my_links_v1';
-
-function load() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-  catch { return []; }
+// ── קריאת הנתונים המוטמעים ──────────────────────────────
+function loadEmbedded() {
+  try {
+    return JSON.parse(document.getElementById('linksData').textContent) || [];
+  } catch { return []; }
 }
 
-function save(links) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(links));
-}
+let links = loadEmbedded();
+let isDirty = false;
 
-let links = load();
-
-// ─── Icons ──────────────────────────────────────────────────
+// ── קבועים ──────────────────────────────────────────────
 const ICONS = [
   '🔗','📄','🗂️','📁','🌐','🛠️','⚙️','🔧','💡','🎨','📊','📈','📝','✏️','📌','📍',
   '🚀','⭐','💎','🔥','🎯','🎉','🧠','💻','📱','🖥️','🖨️','⌨️','🖱️','📷','🎬','🎵',
   '📚','🗺️','🧩','🔑','🏆','🌟','💬','📧','📞','🔔','🛡️','🔐','🌈','🌿','🏠','🏗️',
   '🤖','🔬','🧪','📡','🗃️','🖼️','🎭','🧰','🌍','🛒','📦','🔍','💾','🖊️','🗒️','✅'
 ];
-
 const COLORS = [
   '#6c63ff','#ff6584','#43e97b','#f7971e','#2196f3','#e91e63',
   '#00bcd4','#ff9800','#9c27b0','#4caf50','#f44336','#607d8b'
 ];
 
-// ─── State for modal ────────────────────────────────────────
-let editingId = null;
-let selectedIcon = '🔗';
-let selectedColor = COLORS[0];
+let editingId = null, selectedIcon = '🔗', selectedColor = COLORS[0];
 
-// ─── Build icon grid ────────────────────────────────────────
-function buildIconGrid() {
-  const grid = document.getElementById('iconGrid');
-  grid.innerHTML = ICONS.map(ic =>
-    `<div class="icon-option${ic === selectedIcon ? ' selected' : ''}" data-icon="${ic}" onclick="selectIcon('${ic}')">${ic}</div>`
-  ).join('');
+// ── שמירת קובץ (הורדת HTML מעודכן) ─────────────────────
+function saveFile() {
+  const html = document.documentElement.outerHTML;
+  const jsonStr = JSON.stringify(links, null, 2);
+  // מחליף את תוכן תג ה-script של הנתונים
+  const updated = html.replace(
+    /(<script id="linksData"[^>]*>)([\s\S]*?)(<\/script>)/,
+    `$1\n${jsonStr}\n$3`
+  );
+  const blob = new Blob([updated], { type: 'text/html;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'links.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+
+  isDirty = false;
+  updateStatus(false);
+
+  const btn = document.getElementById('saveFileBtn');
+  btn.textContent = '✓ נשמר!';
+  btn.classList.add('saved');
+  setTimeout(() => { btn.textContent = '💾 שמור קובץ'; btn.classList.remove('saved'); }, 2000);
 }
 
+function markDirty() {
+  isDirty = true;
+  updateStatus(true);
+}
+
+function updateStatus(dirty) {
+  const dot = document.getElementById('statusDot');
+  const txt = document.getElementById('statusText');
+  if (dirty) {
+    dot.classList.add('dirty');
+    txt.textContent = 'יש שינויים שלא נשמרו — לחץ "שמור קובץ" כדי לשמר ולהעלות לגיטהאב';
+  } else {
+    dot.classList.remove('dirty');
+    txt.textContent = `${links.length} לינקים שמורים בקובץ — אחרי שמירה, העלה את הקובץ לגיטהאב`;
+  }
+}
+
+// ── גריד אייקונים ────────────────────────────────────────
+function buildIconGrid() {
+  document.getElementById('iconGrid').innerHTML = ICONS.map(ic =>
+    `<div class="icon-option${ic===selectedIcon?' selected':''}" data-icon="${ic}" onclick="selectIcon('${ic}')">${ic}</div>`
+  ).join('');
+}
 function selectIcon(ic) {
   selectedIcon = ic;
   document.getElementById('fCustomIcon').value = ic;
   document.getElementById('iconPreview').textContent = ic;
-  document.querySelectorAll('.icon-option').forEach(el => {
-    el.classList.toggle('selected', el.dataset.icon === ic);
-  });
+  document.querySelectorAll('.icon-option').forEach(el => el.classList.toggle('selected', el.dataset.icon===ic));
 }
-
-// ─── Build color row ────────────────────────────────────────
 function buildColorRow() {
-  const row = document.getElementById('colorRow');
-  row.innerHTML = COLORS.map(c =>
-    `<div class="color-swatch${c === selectedColor ? ' selected' : ''}" data-color="${c}"
-      style="background:${c}" onclick="selectColor('${c}')"></div>`
+  document.getElementById('colorRow').innerHTML = COLORS.map(c =>
+    `<div class="color-swatch${c===selectedColor?' selected':''}" data-color="${c}" style="background:${c}" onclick="selectColor('${c}')"></div>`
   ).join('');
 }
-
 function selectColor(c) {
   selectedColor = c;
-  document.querySelectorAll('.color-swatch').forEach(el => {
-    el.classList.toggle('selected', el.dataset.color === c);
-  });
+  document.querySelectorAll('.color-swatch').forEach(el => el.classList.toggle('selected', el.dataset.color===c));
 }
 
-// ─── Custom icon input ──────────────────────────────────────
 document.getElementById('fCustomIcon').addEventListener('input', function() {
-  const val = this.value.trim();
-  if (val) {
-    selectedIcon = val;
-    document.getElementById('iconPreview').textContent = val;
+  const v = this.value.trim();
+  if (v) {
+    selectedIcon = v;
+    document.getElementById('iconPreview').textContent = v;
     document.querySelectorAll('.icon-option').forEach(el => el.classList.remove('selected'));
   }
 });
 
-// ─── Category filter ────────────────────────────────────────
+// ── פילטר קטגוריות ───────────────────────────────────────
 let activeFilter = 'הכול';
-
 function setFilter(cat) {
   activeFilter = cat;
-  document.querySelectorAll('.filter-chip').forEach(el => {
-    el.classList.toggle('active', el.dataset.cat === cat);
-  });
+  document.querySelectorAll('.filter-chip').forEach(el => el.classList.toggle('active', el.dataset.cat===cat));
   render();
 }
-
 function updateFilters() {
   const cats = ['הכול', ...new Set(links.map(l => l.cat).filter(Boolean))];
-  const wrap = document.getElementById('filterWrap');
-  wrap.innerHTML = cats.map(c =>
-    `<button class="filter-chip${c === activeFilter ? ' active' : ''}" data-cat="${c}" onclick="setFilter('${c}')">${c}</button>`
+  document.getElementById('filterWrap').innerHTML = cats.map(c =>
+    `<button class="filter-chip${c===activeFilter?' active':''}" data-cat="${c}" onclick="setFilter('${c}')">${c}</button>`
   ).join('');
-
-  // Update datalist
-  const dl = document.getElementById('catList');
-  dl.innerHTML = [...new Set(links.map(l => l.cat).filter(Boolean))].map(c => `<option value="${c}">`).join('');
+  document.getElementById('catList').innerHTML = [...new Set(links.map(l=>l.cat).filter(Boolean))].map(c=>`<option value="${c}">`).join('');
 }
 
-// ─── Render grid ────────────────────────────────────────────
+// ── רינדור גריד ──────────────────────────────────────────
 function render() {
   const q = document.getElementById('searchInput').value.toLowerCase();
   let filtered = links;
-
-  if (activeFilter !== 'הכול') {
-    filtered = filtered.filter(l => l.cat === activeFilter);
-  }
-
-  if (q) {
-    filtered = filtered.filter(l =>
-      (l.name || '').toLowerCase().includes(q) ||
-      (l.desc || '').toLowerCase().includes(q) ||
-      (l.url  || '').toLowerCase().includes(q)
-    );
-  }
-
+  if (activeFilter !== 'הכול') filtered = filtered.filter(l => l.cat===activeFilter);
+  if (q) filtered = filtered.filter(l =>
+    (l.name||'').toLowerCase().includes(q) ||
+    (l.desc||'').toLowerCase().includes(q) ||
+    (l.url||'').toLowerCase().includes(q)
+  );
   document.getElementById('countBadge').textContent =
-    filtered.length === links.length
-      ? `${links.length} לינקים`
-      : `${filtered.length} מתוך ${links.length}`;
+    filtered.length===links.length ? `${links.length} לינקים` : `${filtered.length} מתוך ${links.length}`;
 
   const grid = document.getElementById('grid');
-
-  if (filtered.length === 0) {
+  if (filtered.length===0) {
     grid.innerHTML = `<div class="empty">
-      <div class="empty-icon">${links.length === 0 ? '🔗' : '🔍'}</div>
-      <div class="empty-title">${links.length === 0 ? 'עדיין אין לינקים' : 'לא נמצאו תוצאות'}</div>
-      <div style="color:var(--text-muted);font-size:14px;">${links.length === 0 ? 'לחץ על "הוסף לינק" כדי להתחיל' : 'נסה לחפש משהו אחר'}</div>
+      <div class="empty-icon">${links.length===0?'🔗':'🔍'}</div>
+      <div class="empty-title">${links.length===0?'עדיין אין לינקים':'לא נמצאו תוצאות'}</div>
+      <div style="color:var(--text-muted);font-size:14px;">${links.length===0?'לחץ על "הוסף לינק" כדי להתחיל':'נסה לחפש משהו אחר'}</div>
     </div>`;
     return;
   }
-
   grid.innerHTML = filtered.map(l => {
     const host = (() => { try { return new URL(l.url).hostname.replace('www.',''); } catch { return l.url; } })();
-    const catColor = l.color || COLORS[0];
-    const catStyle = `color:${catColor};border-color:${catColor};background:${catColor}18`;
-
-    return `<div class="link-card" style="--card-color:${catColor}" onclick="openLink('${l.id}')">
+    const cc = l.color || COLORS[0];
+    return `<div class="link-card" style="--card-color:${cc}" onclick="openLink('${l.id}')">
       <div class="card-top">
-        <div class="card-icon">${l.icon || '🔗'}</div>
+        <div class="card-icon">${l.icon||'🔗'}</div>
         <div class="card-actions" onclick="event.stopPropagation()">
-          <a class="card-action-btn" href="${l.url}" target="_blank" rel="noopener" title="פתח לינק">↗</a>
+          <a class="card-action-btn" href="${l.url}" target="_blank" rel="noopener" title="פתח">↗</a>
           <button class="card-action-btn" onclick="openEdit('${l.id}')" title="ערוך">✎</button>
           <button class="card-action-btn danger" onclick="confirmDelete('${l.id}')" title="מחק">✕</button>
         </div>
       </div>
       <div>
         <div class="card-name">${l.name}</div>
-        ${l.desc ? `<div class="card-desc">${l.desc}</div>` : ''}
+        ${l.desc?`<div class="card-desc">${l.desc}</div>`:''}
       </div>
       <div class="card-bottom">
-        ${l.cat ? `<span class="card-category" style="${catStyle}">${l.cat}</span>` : '<span></span>'}
+        ${l.cat?`<span class="card-category" style="color:${cc};border-color:${cc};background:${cc}18">${l.cat}</span>`:'<span></span>'}
         <span class="card-url">${host}</span>
       </div>
     </div>`;
@@ -728,111 +423,72 @@ function render() {
 }
 
 function openLink(id) {
-  const l = links.find(x => x.id === id);
+  const l = links.find(x => x.id===id);
   if (l) window.open(l.url, '_blank', 'noopener');
 }
 
-// ─── Modal ──────────────────────────────────────────────────
+// ── מודאל ────────────────────────────────────────────────
 function openModal() {
-  editingId = null;
-  selectedIcon = '🔗';
-  selectedColor = COLORS[0];
-  document.getElementById('modalTitle').textContent = 'הוסף לינק חדש';
-  document.getElementById('fName').value = '';
-  document.getElementById('fUrl').value = '';
-  document.getElementById('fDesc').value = '';
-  document.getElementById('fCat').value = '';
-  document.getElementById('fCustomIcon').value = '';
-  document.getElementById('iconPreview').textContent = '🔗';
+  editingId=null; selectedIcon='🔗'; selectedColor=COLORS[0];
+  document.getElementById('modalTitle').textContent='הוסף לינק חדש';
+  ['fName','fUrl','fDesc','fCat','fCustomIcon'].forEach(id => document.getElementById(id).value='');
+  document.getElementById('iconPreview').textContent='🔗';
   document.getElementById('deleteBtn').classList.add('hidden');
-  buildIconGrid();
-  buildColorRow();
+  buildIconGrid(); buildColorRow();
   document.getElementById('overlay').classList.add('open');
   setTimeout(() => document.getElementById('fName').focus(), 50);
 }
-
 function openEdit(id) {
-  const l = links.find(x => x.id === id);
-  if (!l) return;
-  editingId = id;
-  selectedIcon = l.icon || '🔗';
-  selectedColor = l.color || COLORS[0];
-  document.getElementById('modalTitle').textContent = 'ערוך לינק';
-  document.getElementById('fName').value = l.name || '';
-  document.getElementById('fUrl').value = l.url || '';
-  document.getElementById('fDesc').value = l.desc || '';
-  document.getElementById('fCat').value = l.cat || '';
-  document.getElementById('fCustomIcon').value = l.icon || '';
-  document.getElementById('iconPreview').textContent = l.icon || '🔗';
+  const l = links.find(x => x.id===id); if(!l) return;
+  editingId=id; selectedIcon=l.icon||'🔗'; selectedColor=l.color||COLORS[0];
+  document.getElementById('modalTitle').textContent='ערוך לינק';
+  document.getElementById('fName').value=l.name||'';
+  document.getElementById('fUrl').value=l.url||'';
+  document.getElementById('fDesc').value=l.desc||'';
+  document.getElementById('fCat').value=l.cat||'';
+  document.getElementById('fCustomIcon').value=l.icon||'';
+  document.getElementById('iconPreview').textContent=l.icon||'🔗';
   document.getElementById('deleteBtn').classList.remove('hidden');
-  buildIconGrid();
-  buildColorRow();
+  buildIconGrid(); buildColorRow();
   document.getElementById('overlay').classList.add('open');
 }
-
-function closeModal() {
-  document.getElementById('overlay').classList.remove('open');
-}
-
-function closeModalIfOutside(e) {
-  if (e.target === document.getElementById('overlay')) closeModal();
-}
+function closeModal() { document.getElementById('overlay').classList.remove('open'); }
+function closeModalIfOutside(e) { if(e.target===document.getElementById('overlay')) closeModal(); }
 
 function saveLink() {
   const name = document.getElementById('fName').value.trim();
   const url  = document.getElementById('fUrl').value.trim();
   if (!name) { document.getElementById('fName').focus(); return; }
   if (!url)  { document.getElementById('fUrl').focus(); return; }
-
   const entry = {
-    id: editingId || Date.now().toString(36) + Math.random().toString(36).slice(2,6),
-    name,
-    url,
+    id: editingId || Date.now().toString(36)+Math.random().toString(36).slice(2,6),
+    name, url,
     desc:  document.getElementById('fDesc').value.trim(),
     cat:   document.getElementById('fCat').value.trim(),
     icon:  selectedIcon,
     color: selectedColor,
-    added: editingId ? (links.find(l=>l.id===editingId)?.added || Date.now()) : Date.now()
+    added: editingId ? (links.find(l=>l.id===editingId)?.added||Date.now()) : Date.now()
   };
-
-  if (editingId) {
-    links = links.map(l => l.id === editingId ? entry : l);
-  } else {
-    links.push(entry);
-  }
-
-  save(links);
-  closeModal();
-  updateFilters();
-  render();
+  links = editingId ? links.map(l => l.id===editingId ? entry : l) : [...links, entry];
+  closeModal(); markDirty(); updateFilters(); render();
 }
-
-function confirmDelete(id) {
-  editingId = id;
-  deleteLink();
-}
-
+function confirmDelete(id) { editingId=id; deleteLink(); }
 function deleteLink() {
   if (!editingId) return;
   if (!confirm('למחוק את הלינק הזה?')) return;
-  links = links.filter(l => l.id !== editingId);
-  save(links);
-  closeModal();
-  updateFilters();
-  render();
+  links = links.filter(l => l.id!==editingId);
+  closeModal(); markDirty(); updateFilters(); render();
 }
 
-// ─── Keyboard ───────────────────────────────────────────────
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
-  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-    if (document.getElementById('overlay').classList.contains('open')) saveLink();
-  }
+  if (e.key==='Escape') closeModal();
+  if ((e.ctrlKey||e.metaKey) && e.key==='Enter' && document.getElementById('overlay').classList.contains('open')) saveLink();
 });
 
-// ─── Init ───────────────────────────────────────────────────
+// ── אתחול ────────────────────────────────────────────────
 updateFilters();
 render();
+updateStatus(false);
 </script>
 </body>
 </html>
