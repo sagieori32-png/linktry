@@ -200,8 +200,8 @@
 
 <div class="save-notice">
   <div class="notice-bar" id="noticeBar">
-    <div class="dot" id="statusDot"></div>
-    <span id="statusText">5 לינקים שמורים בקובץ — אחרי שמירה, העלה את הקובץ לגיטהאב</span>
+    <div class="dot dirty" id="statusDot"></div>
+    <span id="statusText">יש שינויים שלא נשמרו — לחץ "שמור קובץ" כדי לשמר ולהעלות לגיטהאב</span>
   </div>
 </div>
 
@@ -209,7 +209,7 @@
   <input class="search-input" id="searchInput" type="text" placeholder="🔍  חפש לפי שם, תיאור או כתובת..." oninput="render()">
 </div>
 <div class="filter-wrap" id="filterWrap"><button class="filter-chip active" data-cat="הכול" onclick="setFilter('הכול')">הכול</button></div>
-<div class="count-badge" id="countBadge">5 לינקים</div>
+<div class="count-badge" id="countBadge">7 לינקים</div>
 <div class="grid" id="grid"><div class="link-card" style="--card-color:#6c63ff" onclick="openLink('mputa3jr251a')">
       <div class="card-top">
         <div class="card-icon">📈</div>
@@ -295,6 +295,40 @@
         <span></span>
         <span class="card-url">sagieori32-png.github.io</span>
       </div>
+    </div><div class="link-card" style="--card-color:#6c63ff" onclick="openLink('mpy0hg4z6ndz')">
+      <div class="card-top">
+        <div class="card-icon">🔗</div>
+        <div class="card-actions" onclick="event.stopPropagation()">
+          <a class="card-action-btn" href="https://sagieori32-png.github.io/kibudim/" target="_blank" rel="noopener" title="פתח">↗</a>
+          <button class="card-action-btn" onclick="openEdit('mpy0hg4z6ndz')" title="ערוך">✎</button>
+          <button class="card-action-btn danger" onclick="confirmDelete('mpy0hg4z6ndz')" title="מחק">✕</button>
+        </div>
+      </div>
+      <div>
+        <div class="card-name">כיבודים</div>
+        
+      </div>
+      <div class="card-bottom">
+        <span></span>
+        <span class="card-url">sagieori32-png.github.io</span>
+      </div>
+    </div><div class="link-card" style="--card-color:#6c63ff" onclick="openLink('mpy0ic0p667x')">
+      <div class="card-top">
+        <div class="card-icon">🔗</div>
+        <div class="card-actions" onclick="event.stopPropagation()">
+          <a class="card-action-btn" href="https://sagieori32-png.github.io/haarchatov/" target="_blank" rel="noopener" title="פתח">↗</a>
+          <button class="card-action-btn" onclick="openEdit('mpy0ic0p667x')" title="ערוך">✎</button>
+          <button class="card-action-btn danger" onclick="confirmDelete('mpy0ic0p667x')" title="מחק">✕</button>
+        </div>
+      </div>
+      <div>
+        <div class="card-name">הערכת עובדים</div>
+        
+      </div>
+      <div class="card-bottom">
+        <span></span>
+        <span class="card-url">sagieori32-png.github.io</span>
+      </div>
     </div></div>
 
 <!-- Modal -->
@@ -320,16 +354,16 @@
     </div>
     <div class="form-group">
       <label class="form-label" style="display:block;margin-bottom:8px">אייקון</label>
-      <div class="icon-grid" id="iconGrid"><div class="icon-option" data-icon="🔗" onclick="selectIcon('🔗')">🔗</div><div class="icon-option" data-icon="📄" onclick="selectIcon('📄')">📄</div><div class="icon-option" data-icon="🗂️" onclick="selectIcon('🗂️')">🗂️</div><div class="icon-option" data-icon="📁" onclick="selectIcon('📁')">📁</div><div class="icon-option" data-icon="🌐" onclick="selectIcon('🌐')">🌐</div><div class="icon-option" data-icon="🛠️" onclick="selectIcon('🛠️')">🛠️</div><div class="icon-option" data-icon="⚙️" onclick="selectIcon('⚙️')">⚙️</div><div class="icon-option" data-icon="🔧" onclick="selectIcon('🔧')">🔧</div><div class="icon-option" data-icon="💡" onclick="selectIcon('💡')">💡</div><div class="icon-option" data-icon="🎨" onclick="selectIcon('🎨')">🎨</div><div class="icon-option" data-icon="📊" onclick="selectIcon('📊')">📊</div><div class="icon-option selected" data-icon="📈" onclick="selectIcon('📈')">📈</div><div class="icon-option" data-icon="📝" onclick="selectIcon('📝')">📝</div><div class="icon-option" data-icon="✏️" onclick="selectIcon('✏️')">✏️</div><div class="icon-option" data-icon="📌" onclick="selectIcon('📌')">📌</div><div class="icon-option" data-icon="📍" onclick="selectIcon('📍')">📍</div><div class="icon-option" data-icon="🚀" onclick="selectIcon('🚀')">🚀</div><div class="icon-option" data-icon="⭐" onclick="selectIcon('⭐')">⭐</div><div class="icon-option" data-icon="💎" onclick="selectIcon('💎')">💎</div><div class="icon-option" data-icon="🔥" onclick="selectIcon('🔥')">🔥</div><div class="icon-option" data-icon="🎯" onclick="selectIcon('🎯')">🎯</div><div class="icon-option" data-icon="🎉" onclick="selectIcon('🎉')">🎉</div><div class="icon-option" data-icon="🧠" onclick="selectIcon('🧠')">🧠</div><div class="icon-option" data-icon="💻" onclick="selectIcon('💻')">💻</div><div class="icon-option" data-icon="📱" onclick="selectIcon('📱')">📱</div><div class="icon-option" data-icon="🖥️" onclick="selectIcon('🖥️')">🖥️</div><div class="icon-option" data-icon="🖨️" onclick="selectIcon('🖨️')">🖨️</div><div class="icon-option" data-icon="⌨️" onclick="selectIcon('⌨️')">⌨️</div><div class="icon-option" data-icon="🖱️" onclick="selectIcon('🖱️')">🖱️</div><div class="icon-option" data-icon="📷" onclick="selectIcon('📷')">📷</div><div class="icon-option" data-icon="🎬" onclick="selectIcon('🎬')">🎬</div><div class="icon-option" data-icon="🎵" onclick="selectIcon('🎵')">🎵</div><div class="icon-option" data-icon="📚" onclick="selectIcon('📚')">📚</div><div class="icon-option" data-icon="🗺️" onclick="selectIcon('🗺️')">🗺️</div><div class="icon-option" data-icon="🧩" onclick="selectIcon('🧩')">🧩</div><div class="icon-option" data-icon="🔑" onclick="selectIcon('🔑')">🔑</div><div class="icon-option" data-icon="🏆" onclick="selectIcon('🏆')">🏆</div><div class="icon-option" data-icon="🌟" onclick="selectIcon('🌟')">🌟</div><div class="icon-option" data-icon="💬" onclick="selectIcon('💬')">💬</div><div class="icon-option" data-icon="📧" onclick="selectIcon('📧')">📧</div><div class="icon-option" data-icon="📞" onclick="selectIcon('📞')">📞</div><div class="icon-option" data-icon="🔔" onclick="selectIcon('🔔')">🔔</div><div class="icon-option" data-icon="🛡️" onclick="selectIcon('🛡️')">🛡️</div><div class="icon-option" data-icon="🔐" onclick="selectIcon('🔐')">🔐</div><div class="icon-option" data-icon="🌈" onclick="selectIcon('🌈')">🌈</div><div class="icon-option" data-icon="🌿" onclick="selectIcon('🌿')">🌿</div><div class="icon-option" data-icon="🏠" onclick="selectIcon('🏠')">🏠</div><div class="icon-option" data-icon="🏗️" onclick="selectIcon('🏗️')">🏗️</div><div class="icon-option" data-icon="🤖" onclick="selectIcon('🤖')">🤖</div><div class="icon-option" data-icon="🔬" onclick="selectIcon('🔬')">🔬</div><div class="icon-option" data-icon="🧪" onclick="selectIcon('🧪')">🧪</div><div class="icon-option" data-icon="📡" onclick="selectIcon('📡')">📡</div><div class="icon-option" data-icon="🗃️" onclick="selectIcon('🗃️')">🗃️</div><div class="icon-option" data-icon="🖼️" onclick="selectIcon('🖼️')">🖼️</div><div class="icon-option" data-icon="🎭" onclick="selectIcon('🎭')">🎭</div><div class="icon-option" data-icon="🧰" onclick="selectIcon('🧰')">🧰</div><div class="icon-option" data-icon="🌍" onclick="selectIcon('🌍')">🌍</div><div class="icon-option" data-icon="🛒" onclick="selectIcon('🛒')">🛒</div><div class="icon-option" data-icon="📦" onclick="selectIcon('📦')">📦</div><div class="icon-option" data-icon="🔍" onclick="selectIcon('🔍')">🔍</div><div class="icon-option" data-icon="💾" onclick="selectIcon('💾')">💾</div><div class="icon-option" data-icon="🖊️" onclick="selectIcon('🖊️')">🖊️</div><div class="icon-option" data-icon="🗒️" onclick="selectIcon('🗒️')">🗒️</div><div class="icon-option" data-icon="✅" onclick="selectIcon('✅')">✅</div></div>
+      <div class="icon-grid" id="iconGrid"><div class="icon-option selected" data-icon="🔗" onclick="selectIcon('🔗')">🔗</div><div class="icon-option" data-icon="📄" onclick="selectIcon('📄')">📄</div><div class="icon-option" data-icon="🗂️" onclick="selectIcon('🗂️')">🗂️</div><div class="icon-option" data-icon="📁" onclick="selectIcon('📁')">📁</div><div class="icon-option" data-icon="🌐" onclick="selectIcon('🌐')">🌐</div><div class="icon-option" data-icon="🛠️" onclick="selectIcon('🛠️')">🛠️</div><div class="icon-option" data-icon="⚙️" onclick="selectIcon('⚙️')">⚙️</div><div class="icon-option" data-icon="🔧" onclick="selectIcon('🔧')">🔧</div><div class="icon-option" data-icon="💡" onclick="selectIcon('💡')">💡</div><div class="icon-option" data-icon="🎨" onclick="selectIcon('🎨')">🎨</div><div class="icon-option" data-icon="📊" onclick="selectIcon('📊')">📊</div><div class="icon-option" data-icon="📈" onclick="selectIcon('📈')">📈</div><div class="icon-option" data-icon="📝" onclick="selectIcon('📝')">📝</div><div class="icon-option" data-icon="✏️" onclick="selectIcon('✏️')">✏️</div><div class="icon-option" data-icon="📌" onclick="selectIcon('📌')">📌</div><div class="icon-option" data-icon="📍" onclick="selectIcon('📍')">📍</div><div class="icon-option" data-icon="🚀" onclick="selectIcon('🚀')">🚀</div><div class="icon-option" data-icon="⭐" onclick="selectIcon('⭐')">⭐</div><div class="icon-option" data-icon="💎" onclick="selectIcon('💎')">💎</div><div class="icon-option" data-icon="🔥" onclick="selectIcon('🔥')">🔥</div><div class="icon-option" data-icon="🎯" onclick="selectIcon('🎯')">🎯</div><div class="icon-option" data-icon="🎉" onclick="selectIcon('🎉')">🎉</div><div class="icon-option" data-icon="🧠" onclick="selectIcon('🧠')">🧠</div><div class="icon-option" data-icon="💻" onclick="selectIcon('💻')">💻</div><div class="icon-option" data-icon="📱" onclick="selectIcon('📱')">📱</div><div class="icon-option" data-icon="🖥️" onclick="selectIcon('🖥️')">🖥️</div><div class="icon-option" data-icon="🖨️" onclick="selectIcon('🖨️')">🖨️</div><div class="icon-option" data-icon="⌨️" onclick="selectIcon('⌨️')">⌨️</div><div class="icon-option" data-icon="🖱️" onclick="selectIcon('🖱️')">🖱️</div><div class="icon-option" data-icon="📷" onclick="selectIcon('📷')">📷</div><div class="icon-option" data-icon="🎬" onclick="selectIcon('🎬')">🎬</div><div class="icon-option" data-icon="🎵" onclick="selectIcon('🎵')">🎵</div><div class="icon-option" data-icon="📚" onclick="selectIcon('📚')">📚</div><div class="icon-option" data-icon="🗺️" onclick="selectIcon('🗺️')">🗺️</div><div class="icon-option" data-icon="🧩" onclick="selectIcon('🧩')">🧩</div><div class="icon-option" data-icon="🔑" onclick="selectIcon('🔑')">🔑</div><div class="icon-option" data-icon="🏆" onclick="selectIcon('🏆')">🏆</div><div class="icon-option" data-icon="🌟" onclick="selectIcon('🌟')">🌟</div><div class="icon-option" data-icon="💬" onclick="selectIcon('💬')">💬</div><div class="icon-option" data-icon="📧" onclick="selectIcon('📧')">📧</div><div class="icon-option" data-icon="📞" onclick="selectIcon('📞')">📞</div><div class="icon-option" data-icon="🔔" onclick="selectIcon('🔔')">🔔</div><div class="icon-option" data-icon="🛡️" onclick="selectIcon('🛡️')">🛡️</div><div class="icon-option" data-icon="🔐" onclick="selectIcon('🔐')">🔐</div><div class="icon-option" data-icon="🌈" onclick="selectIcon('🌈')">🌈</div><div class="icon-option" data-icon="🌿" onclick="selectIcon('🌿')">🌿</div><div class="icon-option" data-icon="🏠" onclick="selectIcon('🏠')">🏠</div><div class="icon-option" data-icon="🏗️" onclick="selectIcon('🏗️')">🏗️</div><div class="icon-option" data-icon="🤖" onclick="selectIcon('🤖')">🤖</div><div class="icon-option" data-icon="🔬" onclick="selectIcon('🔬')">🔬</div><div class="icon-option" data-icon="🧪" onclick="selectIcon('🧪')">🧪</div><div class="icon-option" data-icon="📡" onclick="selectIcon('📡')">📡</div><div class="icon-option" data-icon="🗃️" onclick="selectIcon('🗃️')">🗃️</div><div class="icon-option" data-icon="🖼️" onclick="selectIcon('🖼️')">🖼️</div><div class="icon-option" data-icon="🎭" onclick="selectIcon('🎭')">🎭</div><div class="icon-option" data-icon="🧰" onclick="selectIcon('🧰')">🧰</div><div class="icon-option" data-icon="🌍" onclick="selectIcon('🌍')">🌍</div><div class="icon-option" data-icon="🛒" onclick="selectIcon('🛒')">🛒</div><div class="icon-option" data-icon="📦" onclick="selectIcon('📦')">📦</div><div class="icon-option" data-icon="🔍" onclick="selectIcon('🔍')">🔍</div><div class="icon-option" data-icon="💾" onclick="selectIcon('💾')">💾</div><div class="icon-option" data-icon="🖊️" onclick="selectIcon('🖊️')">🖊️</div><div class="icon-option" data-icon="🗒️" onclick="selectIcon('🗒️')">🗒️</div><div class="icon-option" data-icon="✅" onclick="selectIcon('✅')">✅</div></div>
       <div class="custom-icon-row">
         <span style="font-size:13px;color:var(--text-soft);">אייקון מותאם:</span>
         <input class="custom-icon-input" id="fCustomIcon" maxlength="4" placeholder="😊">
-        <div class="custom-icon-preview" id="iconPreview">📈</div>
+        <div class="custom-icon-preview" id="iconPreview">🔗</div>
       </div>
     </div>
     <div class="form-group">
       <label class="form-label">צבע כרטיסייה</label>
-      <div class="color-row" id="colorRow"><div class="color-swatch" data-color="#6c63ff" style="background:#6c63ff" onclick="selectColor('#6c63ff')"></div><div class="color-swatch" data-color="#ff6584" style="background:#ff6584" onclick="selectColor('#ff6584')"></div><div class="color-swatch selected" data-color="#43e97b" style="background:#43e97b" onclick="selectColor('#43e97b')"></div><div class="color-swatch" data-color="#f7971e" style="background:#f7971e" onclick="selectColor('#f7971e')"></div><div class="color-swatch" data-color="#2196f3" style="background:#2196f3" onclick="selectColor('#2196f3')"></div><div class="color-swatch" data-color="#e91e63" style="background:#e91e63" onclick="selectColor('#e91e63')"></div><div class="color-swatch" data-color="#00bcd4" style="background:#00bcd4" onclick="selectColor('#00bcd4')"></div><div class="color-swatch" data-color="#ff9800" style="background:#ff9800" onclick="selectColor('#ff9800')"></div><div class="color-swatch" data-color="#9c27b0" style="background:#9c27b0" onclick="selectColor('#9c27b0')"></div><div class="color-swatch" data-color="#4caf50" style="background:#4caf50" onclick="selectColor('#4caf50')"></div><div class="color-swatch" data-color="#f44336" style="background:#f44336" onclick="selectColor('#f44336')"></div><div class="color-swatch" data-color="#607d8b" style="background:#607d8b" onclick="selectColor('#607d8b')"></div></div>
+      <div class="color-row" id="colorRow"><div class="color-swatch selected" data-color="#6c63ff" style="background:#6c63ff" onclick="selectColor('#6c63ff')"></div><div class="color-swatch" data-color="#ff6584" style="background:#ff6584" onclick="selectColor('#ff6584')"></div><div class="color-swatch" data-color="#43e97b" style="background:#43e97b" onclick="selectColor('#43e97b')"></div><div class="color-swatch" data-color="#f7971e" style="background:#f7971e" onclick="selectColor('#f7971e')"></div><div class="color-swatch" data-color="#2196f3" style="background:#2196f3" onclick="selectColor('#2196f3')"></div><div class="color-swatch" data-color="#e91e63" style="background:#e91e63" onclick="selectColor('#e91e63')"></div><div class="color-swatch" data-color="#00bcd4" style="background:#00bcd4" onclick="selectColor('#00bcd4')"></div><div class="color-swatch" data-color="#ff9800" style="background:#ff9800" onclick="selectColor('#ff9800')"></div><div class="color-swatch" data-color="#9c27b0" style="background:#9c27b0" onclick="selectColor('#9c27b0')"></div><div class="color-swatch" data-color="#4caf50" style="background:#4caf50" onclick="selectColor('#4caf50')"></div><div class="color-swatch" data-color="#f44336" style="background:#f44336" onclick="selectColor('#f44336')"></div><div class="color-swatch" data-color="#607d8b" style="background:#607d8b" onclick="selectColor('#607d8b')"></div></div>
     </div>
     <div class="modal-actions">
       <button class="btn btn-secondary" onclick="closeModal()">ביטול</button>
@@ -393,6 +427,26 @@
     "icon": "📈",
     "color": "#43e97b",
     "added": 1780294469326
+  },
+  {
+    "id": "mpy0hg4z6ndz",
+    "name": "כיבודים",
+    "url": "https://sagieori32-png.github.io/kibudim/",
+    "desc": "",
+    "cat": "",
+    "icon": "🔗",
+    "color": "#6c63ff",
+    "added": 1780487832563
+  },
+  {
+    "id": "mpy0ic0p667x",
+    "name": "הערכת עובדים",
+    "url": "https://sagieori32-png.github.io/haarchatov/",
+    "desc": "",
+    "cat": "",
+    "icon": "🔗",
+    "color": "#6c63ff",
+    "added": 1780487873881
   }
 ]
 </script>
